@@ -132,7 +132,7 @@ if ! [ -x /usr/bin/debsecan ] ; then
 fi
 
 # Vars
-suite=$(grep "PRETTY_NAME" /etc/os-release | cut -d "(" -f 2 | cut -d ")" -f 1)
+suite=$(lsb_release -sc)
 fixed_warn=20
 fixed_crit=30
 obsolete_warn=1
@@ -153,8 +153,8 @@ case ${suite} in
     echo "ERROR: The suite you are using is to old. Please upgrade to something newer, like Woody"
     exit 3
   ;;
-  stretch)
-    debug "Stretch is not supported at the moment. Switching suite to sid."
+  bookworm)
+    debug "Bookworm is not supported at the moment. Switching suite to sid."
     suite="sid"
   ;;
 esac
